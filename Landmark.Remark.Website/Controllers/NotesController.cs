@@ -39,7 +39,7 @@ namespace Landmark.Remark.Website.Controllers
         {
 
             var result = await noteManager.GetAllRemarkNotes(filter);
-            if (result != null)
+            if (result != null && result.Count() > 0)
                 return Ok(result);
             else
                 return NotFound();
