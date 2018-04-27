@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html ng-app="landmark">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Optimize mobile viewport -->
+    <title>Landmark Remark</title>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <!-- SPELLS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    @Styles.Render("~/content/css/core.css")
+    @RenderSection("head", required: false)
+
+</head>
+<body>
+    <!-- HEADER AND NAVBAR -->
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Landmark Remark</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer class="text-center small">
+        <p>&copy; @DateTime.Now.Year Landmark.Remark</p>
+    </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

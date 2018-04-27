@@ -1,0 +1,28 @@
+﻿#map {
+    height: 400px;
+    width: 100%;
+    background-color: grey;
+}
+
+.search-postremark{
+     margin-bottom: 100px;
+}
+
+.box-border-left {
+      width: 40%;
+      padding: 10px;
+      border: 1px solid black;
+      float: left;
+}
+
+.box-border-right {
+      width: 40%;
+      padding: 10px;
+      border: 1px solid black;
+      float: right;
+}
+.highlight-message {
+      color: #ff0000;     
+}
+
+

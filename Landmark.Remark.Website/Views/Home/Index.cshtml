@@ -1,0 +1,46 @@
+﻿@section head {
+    @Styles.Render("~/content/css/map.css")
+}
+
+<div ng-controller="mapController">
+
+    <div class="row search-postremark">
+        <div class="col-lg-6 box-border-left">
+            <div class="input-group">
+                <input type="text" class="form-control" id="search" placeholder="Search for remark" ng-model="filter">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button" ng-click="initMap()">Go!</button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-lg-6 box-border-right">
+            <form id="postremark">
+                <div class="form-group ">
+                    <input type="text" class="form-control" id="username" placeholder="Enter username" ng-model="username" required>
+                    <span ng-show="postremark.username.$touched && postremark.username.$invalid">username is required.</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="remark" placeholder="Enter remark" ng-model="remark" required>
+                    <span ng-show="postremark.remark.$touched && postremark.remark.$invalid">remark is required.</span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-secondary" ng-click="postRemarkForCurrentLocation()">Post!</button> <strong class="highlight-message">Lat: {{location.lat}} Lng: {{location.lng}} </strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div ng-show="showmessage" class="highlight-message">
+        <p><strong>Message: {{geolocationfailed}}</strong></p>
+    </div>
+    <div id="main" ng-init="loadMapWithCurrentPosition()">
+        <div id="map"></div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("https://maps.googleapis.com/maps/api/js?key=AIzaSyAnt44OsVl9hI8Hp2Oy2BBfcMsE6BLfivg")
+    @Scripts.Render("~/scripts/app/core.js")
+    @Scripts.Render("~/scripts/app/services/map.js")
+    @Scripts.Render("~/scripts/app/controller/map.js")
+}
