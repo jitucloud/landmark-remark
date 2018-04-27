@@ -55,6 +55,8 @@ namespace Landmark.Remark.Website.Controllers
 
         public async Task<IHttpActionResult> PostRemarkOnCurrentLocation(UserNote note)
         {
+            if (note == null || string.IsNullOrEmpty(note.UserName) || string.IsNullOrEmpty(note.Note))
+                return BadRequest("username or remark is not passed");
 
             var result = await noteManager.PostRemarkOnCurrentLocation(note);
             if (result)
