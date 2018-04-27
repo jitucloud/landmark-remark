@@ -69,5 +69,61 @@ namespace Landmark.Remark.Website.Tests
 
 
         }
+
+
+        [TestMethod]
+        public void NotesController_PostAllNotes_WithOutUserName_BAD_Request()
+        {
+            //Arrange
+            var mockRepository = new Mock<INoteManager>();
+            var noteToPost = new UserNote()
+            {
+                UserName = "",
+                Note = "Hello Sir",
+                Lattitude = -37.5984421f,
+                Longitude = 144.941818f
+
+            };
+
+            var controller = new NotesController(mockRepository.Object);
+
+            //Act
+            var result =  controller.PostRemarkOnCurrentLocation(noteToPost);
+            var contentResult = result.Result as BadRequestErrorMessageResult;
+
+            //Assert
+            Assert.IsInstanceOfType(contentResult, typeof(BadRequestErrorMessageResult));
+
+
+        }
+
+        [TestMethod]
+        public void NotesController_PostAllNotes_Returns_True()
+        {
+            //Arrange
+            var mockRepository = new Mock<INoteManager>();
+            var noteToPost = new UserNote()
+            {
+                UserName = "Ramesh Ji",
+                Note = "Hello Sir",
+                Lattitude = -37.5984421f,
+                Longitude = 144.941818f
+
+            };
+            mockRepository.Setup(x => x.PostRemarkOnCurrentLocation(noteToPost)).ReturnsAsync(true);
+            var controller = new NotesController(mockRepository.Object);
+
+            //Act
+            var result = controller.PostRemarkOnCurrentLocation(noteToPost);
+            var contentResult = result.Result as OkNegotiatedContentResult<bool>;
+
+            //Assert
+            //Assert
+            Assert.IsNotNull(contentResult);
+            Assert.IsNotNull(contentResult.Content);
+            Assert.AreEqual(contentResult.Content, true);
+
+
+        }
     }
 }
