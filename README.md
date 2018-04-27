@@ -33,11 +33,19 @@ Response : <bool> true or false
 
 
 1. As a user (of the application) I can see my current location on a map
+
 Answer: Current location is shown if not default location is shown. 
+
 2. As a user I can save a short note at my current location
+
 Answer: Post notes using the current location or choose any location by clicking on the map
+
 3. As a user I can see notes that I have saved at the location they were saved on the map
+
 Answer: All notes are displayed by default
+
 4. As a user I can see the location, text, and user-name of notes other users have saved
+
 Answer: All notes from all users are displayed by default
-5. As a user I have the ability to search for a note based on contained text or user-nameAnswer: Current can search on username and remark text
+
+5. As a user I have the ability to search for a note based on contained text or user-nameAnswer: Current can search on username and remark text
